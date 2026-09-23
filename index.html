@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 29th Birthday to My Forever Love ✨</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Cinzel', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        champagne: {
+                            50: '#fcfbfa',
+                            100: '#f5f2ed',
+                            200: '#e8e0d5',
+                            300: '#d4c5b1',
+                            400: '#b8a183',
+                            500: '#9e8460',
+                            600: '#856d4d',
+                            700: '#6c573f',
+                            800: '#574635',
+                            900: '#483a2d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .perspective-1000 { perspective: 1000px; }
+        .transform-style-3d { transform-style: preserve-3d; }
+        .backface-hidden { backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
+        }
+        .floating-element { animation: float 7s ease-in-out infinite; }
+        .gold-gradient { background: linear-gradient(135deg, #f5f2ed 0%, #b8a183 50%, #9e8460 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glass-panel { background: rgba(18, 18, 18, 0.75); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(184, 161, 131, 0.2); }
+    </style>
+</head>
+<body class="bg-[#0b0b0b] text-[#e8e0d5] font-sans antialiased overflow-x-hidden selection:bg-[#b8a183] selection:text-black">
+
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0b0b0b]/85 backdrop-blur-md border-b border-champagne-500/20 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#hero" class="font-serif text-xl tracking-[0.2em] font-bold text-champagne-300 flex items-center gap-3">
+                <i class="fa-solid fa-crown text-champagne-400 text-sm"></i>
+                <span>29TH BIRTHDAY</span>
+            </a>
+            <div class="hidden lg:flex items-center space-x-8 text-xs font-medium tracking-[0.15em] uppercase text-champagne-300/80">
+                <a href="#hero" class="hover:text-champagne-300 transition-colors">Home</a>
+                <a href="#milestone" class="hover:text-champagne-300 transition-colors">Milestone 29</a>
+                <a href="#vault" class="hover:text-champagne-300 transition-colors font-semibold text-champagne-400">Media Vault ✨</a>
+                <a href="#reasons" class="hover:text-champagne-300 transition-colors">29 Reasons</a>
+                <a href="#letter" class="hover:text-champagne-300 transition-colors">Love Letter</a>
+                <a href="#github-deploy" class="text-champagne-200 font-semibold hover:text-white flex items-center gap-1.5 bg-champagne-500/10 border border-champagne-500/30 px-4 py-2 rounded-full"><i class="fa-brands fa-github"></i> GitHub Repositories</a>
+            </div>
+            <button id="mobile-menu-btn" class="lg:hidden text-champagne-200 text-xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-[#121212] border-b border-champagne-500/20 px-6 py-6 space-y-4 font-medium text-xs tracking-widest uppercase">
+            <a href="#hero" class="block text-champagne-300">Home</a>
+            <a href="#milestone" class="block text-champagne-300">Milestone 29</a>
+            <a href="#vault" class="block text-champagne-400 font-bold">Media Vault ✨</a>
+            <a href="#reasons" class="block text-champagne-300">29 Reasons</a>
+            <a href="#letter" class="block text-champagne-300">Love Letter</a>
+            <a href="#github-deploy" class="block text-champagne-200 font-bold"><i class="fa-brands fa-github"></i> GitHub Repositories</a>
+        </div>
+    </nav>
+
+    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 px-6 overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#b8a183_1px,transparent_1px)] [background-size:32px_32px]"></div>
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center gap-2.5 bg-champagne-500/10 border border-champagne-500/30 text-champagne-300 px-5 py-2 rounded-full text-xs font-medium tracking-[0.25s] uppercase mb-8">
+                <i class="fa-regular fa-gem text-champagne-400"></i> Executive Edition • Celebrating 29 Years
+            </div>
+            <h1 class="font-serif text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-8 leading-[1.1]">
+                Happy 29th Birthday, <br><span class="gold-gradient italic font-normal">My Adored Wife</span>
+            </h1>
+            <p class="text-champagne-300/80 text-base sm:text-lg font-light max-w-2xl mx-auto mb-12 tracking-wide leading-relaxed">
+                To the epitome of grace, elegance, and timeless beauty. This digital sanctuary securely autosaves all your PC photos, videos, and songs into a persistent browser vault.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
+                <a href="#vault" class="w-full sm:w-auto bg-[#f5f2ed] hover:bg-[#b8a183] text-black font-semibold text-xs tracking-[0.2em] uppercase px-8 py-4 rounded-full transition-all duration-300 shadow-xl shadow-champagne-500/10">
+                    Open Media Vault <i class="fa-solid fa-arrow-down ml-2"></i>
+                </a>
+                <button id="play-music-btn" class="w-full sm:w-auto bg-transparent hover:bg-champagne-500/10 text-champagne-300 border border-champagne-500/30 font-semibold text-xs tracking-[0.2em] uppercase px-8 py-4 rounded-full transition-all duration-300 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-music text-champagne-400"></i> <span id="music-btn-text">Play Symphony Vibe</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="milestone" class="py-28 px-6 bg-[#111111] border-y border-champagne-500/25 relative z-10">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-champagne-400 text-xs tracking-[0.25em] uppercase font-semibold">Timeless Devotion</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white mt-3">The 29th Chapter</h2>
+                <p class="text-champagne-300/70 font-light mt-3 text-sm max-w-lg mx-auto">Every second of your existence brings boundless light into this world. Here is your live milestone counter:</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
+                <div class="glass-panel p-8 rounded-2xl text-center">
+                    <span id="days-count" class="font-serif text-4xl sm:text-6xl font-bold text-champagne-300 block mb-2">0</span>
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-champagne-400/80 font-semibold">Days Cherished</span>
+                </div>
+                <div class="glass-panel p-8 rounded-2xl text-center">
+                    <span id="hours-count" class="font-serif text-4xl sm:text-6xl font-bold text-champagne-300 block mb-2">0</span>
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-champagne-400/80 font-semibold">Hours</span>
+                </div>
+                <div class="glass-panel p-8 rounded-2xl text-center">
+                    <span id="mins-count" class="font-serif text-4xl sm:text-6xl font-bold text-champagne-300 block mb-2">0</span>
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-champagne-400/80 font-semibold">Minutes</span>
+                </div>
+                <div class="glass-panel p-8 rounded-2xl text-center">
+                    <span id="secs-count" class="font-serif text-4xl sm:text-6xl font-bold text-champagne-300 block mb-2">0</span>
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-champagne-400/80 font-semibold">Seconds of Joy</span>
+                </div>
+            </div>
+
+            <!-- Wish Generator -->
+            <div class="glass-panel p-8 sm:p-12 rounded-3xl max-w-3xl mx-auto text-center relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 text-champagne-500/10 text-9xl font-serif select-none pointer-events-none font-bold">29</div>
+                <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white mb-3">Whisper a Birthday Wish</h3>
+                <p class="text-champagne-300/70 text-xs sm:text-sm mb-8 font-light">Seal your birthday wish in this digital capsule. It remains locked in our memories forever.</p>
+                <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                    <input type="text" id="wish-input" placeholder="Type your secret birthday wish..." class="flex-grow px-6 py-4 rounded-full bg-black/60 border border-champagne-500/30 focus:outline-none focus:border-champagne-400 text-white text-xs sm:text-sm">
+                    <button id="wish-btn" class="bg-champagne-400 hover:bg-champagne-300 text-black font-semibold text-xs tracking-[0.15em] uppercase px-8 py-4 rounded-full transition-colors whitespace-nowrap">Send Wish</button>
+                </div>
+                <div id="wish-success" class="hidden mt-5 text-champagne-300 text-xs tracking-wider font-medium bg-champagne-500/10 border border-champagne-500/30 py-3 px-6 rounded-xl inline-block">
+                    <i class="fa-solid fa-wand-magic-sparkles mr-2"></i> Your wish has been whispered to the cosmos! It is already yours. ✨
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="vault" class="py-28 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-champagne-400 text-xs tracking-[0.25em] uppercase font-semibold"><i class="fa-solid fa-vault mr-1"></i> IndexedDB Universal Media Vault</span>
+                <h2 class="font-serif text-4xl sm:text-5xl font-bold text-white mt-3">PC Import & Instant Autosave</h2>
+                <p class="text-champagne-300/70 font-light mt-3 text-sm max-w-2xl mx-auto">Upload individual files or select entire PC folders. Supports <strong class="text-white font-medium">all photo, video, and audio formats</strong> (HEIC, PNG, JPG, WEBP, MP4, MOV, AVI, MKV, WebM, MP3, WAV, AAC, M4A). All uploads autosave securely into browser storage instantly!</p>
+            </div>
+
+            <!-- Dual Import Controls -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-12">
+                <!-- File Picker Upload -->
+                <div class="glass-panel p-6 rounded-2xl text-center relative hover:border-champagne-400 transition-all cursor-pointer">
+                    <input type="file" id="media-file-input" accept="image/*,video/*,audio/*,.heic,.heif,.mkv,.avi,.mov,.mp4,.webm,.mp3,.wav,.aac,.m4a" multiple class="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-20">
+                    <div class="flex flex-col items-center justify-center space-y-3">
+                        <div class="w-12 h-12 bg-champagne-500/10 border border-champagne-500/30 text-champagne-300 rounded-full flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-file-arrow-up"></i>
+                        </div>
+                        <h4 class="font-serif text-lg font-bold text-white">Upload Files from PC</h4>
+                        <p class="text-[11px] text-champagne-300/60">Select multiple photos, videos, or songs</p>
+                        <span class="inline-block bg-champagne-400 text-black text-[10px] font-semibold tracking-[0.15em] uppercase px-5 py-2.5 rounded-full">Browse Files</span>
+                    </div>
+                </div>
+
+                <!-- Folder Import (webkitdirectory) -->
+                <div class="glass-panel p-6 rounded-2xl text-center relative hover:border-champagne-400 transition-all cursor-pointer">
+                    <input type="file" id="media-folder-input" webkitdirectory directory multiple class="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-20">
+                    <div class="flex flex-col items-center justify-center space-y-3">
+                        <div class="w-12 h-12 bg-champagne-500/10 border border-champagne-500/30 text-champagne-300 rounded-full flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-folder-open"></i>
+                        </div>
+                        <h4 class="font-serif text-lg font-bold text-white">Import Entire PC Folder</h4>
+                        <p class="text-[11px] text-champagne-300/60">Batch import all media inside a folder</p>
+                        <span class="inline-block bg-champagne-300 text-black text-[10px] font-semibold tracking-[0.15em] uppercase px-5 py-2.5 rounded-full">Select Folder</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="upload-status" class="hidden text-center mb-8 text-xs tracking-wider font-medium text-champagne-300 bg-champagne-500/10 border border-champagne-500/30 py-3 px-6 rounded-xl max-w-md mx-auto">
+                <i class="fa-solid fa-spinner fa-spin mr-2"></i> Autosaving media to IndexedDB database...
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button onclick="filterVault('all')" class="vault-tab active-tab bg-champagne-400 text-black px-6 py-2.5 rounded-full text-xs font-semibold tracking-widest uppercase transition-all">All Media</button>
+                <button onclick="filterVault('image')" class="vault-tab bg-black/50 border border-champagne-500/30 text-champagne-300 px-6 py-2.5 rounded-full text-xs font-semibold tracking-widest uppercase transition-all hover:bg-champagne-500/10">Photos</button>
+                <button onclick="filterVault('video')" class="vault-tab bg-black/50 border border-champagne-500/30 text-champagne-300 px-6 py-2.5 rounded-full text-xs font-semibold tracking-widest uppercase transition-all hover:bg-champagne-500/10">Videos</button>
+                <button onclick="filterVault('audio')" class="vault-tab bg-black/50 border border-champagne-500/30 text-champagne-300 px-6 py-2.5 rounded-full text-xs font-semibold tracking-widest uppercase transition-all hover:bg-champagne-500/10">Audio / Songs</button>
+            </div>
+
+            <!-- Dynamic Gallery Grid -->
+            <div id="dynamic-gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Populated dynamically via IndexedDB -->
+            </div>
+        </div>
+    </section>
+
+    <section id="memories" class="py-28 px-6 bg-[#111111] border-t border-champagne-500/20 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-champagne-400 text-xs tracking-[0.25em] uppercase font-semibold">Visual Chronicle</span>
+                <h2 class="font-serif text-4xl sm:text-5xl font-bold text-white mt-3">The Curated Gallery</h2>
+                <p class="text-champagne-300/70 font-light mt-3 text-sm">Click or tap any polaroid frame to flip it and read the story behind the moment.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Polaroid 1 -->
+                <div class="perspective-1000 h-[420px] cursor-pointer group" onclick="this.querySelector('.polaroid-inner').classList.toggle('rotate-y-180')">
+                    <div class="polaroid-inner relative w-full h-full duration-700 transform-style-3d shadow-2xl rounded-2xl">
+                        <div class="backface-hidden absolute inset-0 bg-[#1a1a1a] p-5 pb-8 rounded-2xl border border-champagne-500/20 flex flex-col justify-between">
+                            <div class="w-full h-72 bg-black rounded-xl overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80" alt="Memory" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                                <div class="absolute top-3 right-3 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-[10px] tracking-widest uppercase font-semibold text-champagne-300 border border-champagne-500/30">
+                                    Paris
+                                </div>
+                            </div>
+                            <div class="text-center pt-4">
+                                <p class="font-serif italic text-white text-base tracking-wide">"Under the Eiffel Lights"</p>
+                                <span class="text-[10px] tracking-widest uppercase text-champagne-400/60 font-semibold mt-1 block">Click to flip card ➔</span>
+                            </div>
+                        </div>
+                        <div class="backface-hidden absolute inset-0 bg-[#161616] border border-champagne-500/40 text-champagne-200 p-8 rounded-2xl rotate-y-180 flex flex-col justify-center items-center text-center shadow-2xl">
+                            <i class="fa-solid fa-quote-left text-3xl text-champagne-400 mb-4"></i>
+                            <p class="font-serif text-sm sm:text-base leading-relaxed mb-6 font-light">"Watching you illuminated by the city lights, I knew without a shadow of doubt that you are my greatest adventure and forever home."</p>
+                            <span class="text-[10px] uppercase tracking-[0.25em] text-champagne-400 font-semibold">October Edition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Polaroid 2 -->
+                <div class="perspective-1000 h-[420px] cursor-pointer group" onclick="this.querySelector('.polaroid-inner').classList.toggle('rotate-y-180')">
+                    <div class="polaroid-inner relative w-full h-full duration-700 transform-style-3d shadow-2xl rounded-2xl">
+                        <div class="backface-hidden absolute inset-0 bg-[#1a1a1a] p-5 pb-8 rounded-2xl border border-champagne-500/20 flex flex-col justify-between">
+                            <div class="w-full h-72 bg-black rounded-xl overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=800&q=80" alt="Memory" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                                <div class="absolute top-3 right-3 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-[10px] tracking-widest uppercase font-semibold text-champagne-300 border border-champagne-500/30">
+                                    Sunset
+                                </div>
+                            </div>
+                            <div class="text-center pt-4">
+                                <p class="font-serif italic text-white text-base tracking-wide">"Golden Hour Serenade"</p>
+                                <span class="text-[10px] tracking-widest uppercase text-champagne-400/60 font-semibold mt-1 block">Click to flip card ➔</span>
+                            </div>
+                        </div>
+                        <div class="backface-hidden absolute inset-0 bg-[#161616] border border-champagne-500/40 text-champagne-200 p-8 rounded-2xl rotate-y-180 flex flex-col justify-center items-center text-center shadow-2xl">
+                            <i class="fa-solid fa-quote-left text-3xl text-champagne-400 mb-4"></i>
+                            <p class="font-serif text-sm sm:text-base leading-relaxed mb-6 font-light">"Holding your hand as the sun dipped below the horizon, feeling overwhelmingly grateful that out of all paths in the universe, ours converged."</p>
+                            <span class="text-[10px] uppercase tracking-[0.25em] text-champagne-400 font-semibold">Summer Memory</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Polaroid 3 -->
+                <div class="perspective-1000 h-[420px] cursor-pointer group" onclick="this.querySelector('.polaroid-inner').classList.toggle('rotate-y-180')">
+                    <div class="polaroid-inner relative w-full h-full duration-700 transform-style-3d shadow-2xl rounded-2xl">
+                        <div class="backface-hidden absolute inset-0 bg-[#1a1a1a] p-5 pb-8 rounded-2xl border border-champagne-500/20 flex flex-col justify-between">
+                            <div class="w-full h-72 bg-black rounded-xl overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80" alt="Memory" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                                <div class="absolute top-3 right-3 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-[10px] tracking-widest uppercase font-semibold text-champagne-300 border border-champagne-500/30">
+                                    Sanctuary
+                                </div>
+                            </div>
+                            <div class="text-center pt-4">
+                                <p class="font-serif italic text-white text-base tracking-wide">"Quiet Mornings Together"</p>
+                                <span class="text-[10px] tracking-widest uppercase text-champagne-400/60 font-semibold mt-1 block">Click to flip card ➔</span>
+                            </div>
+                        </div>
+                        <div class="backface-hidden absolute inset-0 bg-[#161616] border border-champagne-500/40 text-champagne-200 p-8 rounded-2xl rotate-y-180 flex flex-col justify-center items-center text-center shadow-2xl">
+                            <i class="fa-solid fa-quote-left text-3xl text-champagne-400 mb-4"></i>
+                            <p class="font-serif text-sm sm:text-base leading-relaxed mb-6 font-light">"Your sleepy morning smile and the melody of your laugh over coffee are my absolute favorite treasures in this lifetime."</p>
+                            <span class="text-[10px] uppercase tracking-[0.25em] text-champagne-400 font-semibold">Everyday Joy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reasons" class="py-28 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-champagne-400 text-xs tracking-[0.25em] uppercase font-semibold">Infinite Adoration</span>
+                <h2 class="font-serif text-4xl sm:text-5xl font-bold text-white mt-3">29 Reasons Why I Love You</h2>
+                <p class="text-champagne-300/70 font-light mt-3 text-sm">Click any card to highlight a heartfelt truth about your profound place in my life.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="reasons-grid">
+                <!-- Populated dynamically via JS -->
+            </div>
+        </div>
+    </section>
+
+    <section id="letter" class="py-28 px-6 bg-[#111111] border-t border-champagne-500/20 relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <div class="glass-panel p-8 sm:p-16 rounded-3xl relative">
+                <div class="absolute top-0 right-12 transform -translate-y-1/2 bg-champagne-400 text-black w-14 h-14 rounded-full flex items-center justify-center text-xl shadow-xl font-bold">
+                    <i class="fa-solid fa-feather"></i>
+                </div>
+                <span class="text-champagne-400 text-xs tracking-[0.25em] uppercase font-semibold">Personal Correspondence</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mt-2 mb-10">My Dearest Wife,</h2>
+                
+                <div class="space-y-6 text-champagne-200/90 font-light leading-relaxed text-base sm:text-lg font-serif">
+                    <p>As you step into your 29th year, I find myself reflecting on all the moments that brought us together and marveling at the extraordinary woman you have become. You bring a grace, elegance, and radiance into my world that I never knew existed.</p>
+                    <p>Your laugh is my favorite melody, your embrace is my absolute sanctuary, and your love is the anchor that keeps me grounded through everything. Every day with you is a profound privilege.</p>
+                    <p>May this 29th year of your life bring you closer to your grandest dreams, fill your days with boundless peace, and remind you just how immensely cherished you are—not just today, but for all eternity.</p>
+                </div>
+
+                <div class="mt-12 pt-8 border-t border-champagne-500/20 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div>
+                        <p class="font-serif italic text-2xl text-champagne-300">Forever & Always Yours,</p>
+                        <p class="font-sans text-xs tracking-[0.2em] uppercase text-champagne-400 font-semibold mt-1">Your Devoted Husband ❤️</p>
+                    </div>
+                    <div class="text-champagne-400 text-2xl">
+                        <i class="fa-solid fa-infinity"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="github-deploy" class="py-28 px-6 bg-[#070707] text-white relative z-10 border-t border-champagne-500/30">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-champagne-400 text-xs tracking-[0.25em] uppercase font-semibold"><i class="fa-brands fa-github mr-1"></i> Open Source Repository Package</span>
+                <h2 class="font-serif text-4xl sm:text-5xl font-bold text-white mt-3">GitHub Repository Files</h2>
+                <p class="text-champagne-300/70 font-light mt-3 text-sm max-w-2xl mx-auto">Switch between repository files below to copy or download them for your GitHub project and publish on GitHub Pages for free.</p>
+            </div>
+
+            <!-- Steps Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div class="bg-[#121212] p-8 rounded-2xl border border-champagne-500/20">
+                    <div class="w-12 h-12 bg-champagne-400 text-black rounded-xl flex items-center justify-center font-bold text-lg mb-6 shadow-md">1</div>
+                    <h3 class="font-serif text-xl font-bold text-white mb-3">Create Repository</h3>
+                    <p class="text-champagne-300/70 text-xs leading-relaxed font-light">Go to GitHub, create a new public repository named <code class="bg-black px-2 py-1 rounded text-champagne-300 font-mono">birthday-for-wife</code>.</p>
+                </div>
+                <div class="bg-[#121212] p-8 rounded-2xl border border-champagne-500/20">
+                    <div class="w-12 h-12 bg-champagne-400 text-black rounded-xl flex items-center justify-center font-bold text-lg mb-6 shadow-md">2</div>
+                    <h3 class="font-serif text-xl font-bold text-white mb-3">Add Repository Files</h3>
+                    <p class="text-champagne-300/70 text-xs leading-relaxed font-light">Upload <code class="bg-black px-2 py-1 rounded text-champagne-300 font-mono">index.html</code>, <code class="bg-black px-2 py-1 rounded text-champagne-300 font-mono">README.md</code>, <code class="bg-black px-2 py-1 rounded text-champagne-300 font-mono">package.json</code>, and <code class="bg-black px-2 py-1 rounded text-champagne-300 font-mono">.gitignore</code> into your repo.</p>
+                </div>
+                <div class="bg-[#121212] p-8 rounded-2xl border border-champagne-500/20">
+                    <div class="w-12 h-12 bg-champagne-400 text-black rounded-xl flex items-center justify-center font-bold text-lg mb-6 shadow-md">3</div>
+                    <h3 class="font-serif text-xl font-bold text-white mb-3">Enable GitHub Pages</h3>
+                    <p class="text-champagne-300/70 text-xs leading-relaxed font-light">Go to <strong class="text-white">Settings ➔ Pages</strong>, select branch <code class="bg-black px-2 py-1 rounded text-champagne-300 font-mono">main</code>, and save. Your site is live!</p>
+                </div>
+            </div>
+
+            <!-- Tabbed Code Section -->
+            <div class="bg-[#0f0f0f] rounded-2xl border border-champagne-500/30 overflow-hidden shadow-2xl">
+                <div class="flex flex-wrap items-center justify-between bg-[#161616] px-6 py-4 border-b border-champagne-500/20 gap-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 rounded-full bg-rose-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-amber-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                        <span class="ml-4 text-xs font-mono text-champagne-300" id="current-filename">index.html</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <div class="flex space-x-1 bg-black/40 p-1 rounded-xl border border-champagne-500/20">
+                            <button onclick="switchTab('html')" id="tab-btn-html" class="tab-btn px-4 py-1.5 rounded-lg text-xs font-mono bg-champagne-400 text-black font-semibold transition-all">index.html</button>
+                            <button onclick="switchTab('readme')" id="tab-btn-readme" class="tab-btn px-4 py-1.5 rounded-lg text-xs font-mono text-champagne-300 hover:text-white transition-all">README.md</button>
+                            <button onclick="switchTab('package')" id="tab-btn-package" class="tab-btn px-4 py-1.5 rounded-lg text-xs font-mono text-champagne-300 hover:text-white transition-all">package.json</button>
+                            <button onclick="switchTab('gitignore')" id="tab-btn-gitignore" class="tab-btn px-4 py-1.5 rounded-lg text-xs font-mono text-champagne-300 hover:text-white transition-all">.gitignore</button>
+                        </div>
+                        <button onclick="copyActiveCode()" class="bg-[#222] hover:bg-[#333] text-champagne-200 text-xs px-4 py-2 rounded-lg border border-champagne-500/30 flex items-center gap-2 transition-all shadow">
+                            <i class="fa-regular fa-copy"></i> <span id="copy-btn-text">Copy Code</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="relative">
+                    <!-- Tab Content HTML -->
+                    <div id="content-html" class="tab-content p-6 overflow-x-auto text-champagne-300/90 font-mono text-xs leading-relaxed max-h-96">
+                        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en" class="scroll-smooth"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Happy 29th Birthday My Love&lt;/title&gt;
+    &lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body class="bg-[#0b0b0b] text-[#e8e0d5] font-sans"&gt;
+    &lt;h1 class="text-4xl text-center mt-20 font-serif"&gt;Happy 29th Birthday, My Wife!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                    <!-- Tab Content README -->
+                    <div id="content-readme" class="tab-content hidden p-6 overflow-x-auto text-champagne-300/90 font-mono text-xs leading-relaxed max-h-96">
+                        <pre><code># 🎂 Happy 29th Birthday Website for My Wife
+
+An executive luxury, single-file interactive website created to celebrate my wife's 29th birthday. Features universal media vault support (photos, videos, and audio), folder import from PC, IndexedDB autosave persistence, milestone countdown tracker, 29 reasons cards, and ambient music.
+
+## ✨ Features
+- **Executive Design:** Deep black, brushed gold, and soft champagne color palette with Cinzel typography.
+- **Universal Media Vault:** Supports all photo, video, and audio formats (HEIC, PNG, JPG, WEBP, MP4, MOV, AVI, MKV, WebM, MP3, WAV, AAC, M4A).
+- **Dual Import Options:** Individual file picker and batch folder import (`webkitdirectory`).
+- **Instant Autosave:** IndexedDB browser database guarantees zero data loss on refresh.
+- **Interactive Player:** Built-in audio and video players with category tabs.
+- **GitHub Pages Ready:** Deploy in under 2 minutes.
+
+## 🚀 Quick Deployment
+1. Clone this repository or download `index.html`.
+2. Push to your GitHub repository (e.g., `birthday-for-wife`).
+3. Enable **GitHub Pages** in your repository settings under the `main` branch.
+4. Enjoy your live website!
+</code></pre>
+                    </div>
+                    <!-- Tab Content Package -->
+                    <div id="content-package" class="tab-content hidden p-6 overflow-x-auto text-champagne-300/90 font-mono text-xs leading-relaxed max-h-96">
+                        <pre><code>{
+  "name": "wife-29th-birthday-website",
+  "version": "1.0.0",
+  "description": "Luxurious 29th birthday website with IndexedDB media vault and PC folder import",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve"
+  },
+  "keywords": [
+    "birthday",
+    "github-pages",
+    "luxury",
+    "indexeddb"
+  ],
+  "author": "Devoted Husband",
+  "license": "MIT",
+  "dependencies": {
+    "tailwindcss": "^3.3.0",
+    "font-awesome": "^6.4.0"
+  }
+}</code></pre>
+                    </div>
+                    <!-- Tab Content Gitignore -->
+                    <div id="content-gitignore" class="tab-content hidden p-6 overflow-x-auto text-champagne-300/90 font-mono text-xs leading-relaxed max-h-96">
+                        <pre><code># Dependency directories
+node_modules/
+jspm_packages/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black text-champagne-400/60 py-12 text-center text-xs tracking-[0.2em] uppercase border-t border-champagne-500/20 relative z-10">
+        <p>Crafted with absolute devotion for my wife on her 29th birthday ✨</p>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Live Age Calculator
+        const birthDate = new Date();
+        birthDate.setFullYear(birthDate.getFullYear() - 29);
+        birthDate.setHours(0, 0, 0, 0);
+
+        function updateCounter() {
+            const now = new Date();
+            const diff = now - birthDate;
+            document.getElementById('days-count').innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toLocaleString();
+            document.getElementById('hours-count').innerText = Math.floor((diff / (1000 * 60 * 60)) % 24).toLocaleString();
+            document.getElementById('mins-count').innerText = Math.floor((diff / 1000 / 60) % 60).toLocaleString();
+            document.getElementById('secs-count').innerText = Math.floor((diff / 1000) % 60).toLocaleString();
+        }
+        setInterval(updateCounter, 1000);
+        updateCounter();
+
+        // IndexedDB Persistence for All Media Formats (Photos, Videos, Audio)
+        const DB_NAME = 'BirthdayVaultDB';
+        const STORE_NAME = 'universalMediaVault';
+        let db = null;
+        let activeCategoryFilter = 'all';
+
+        function initIndexedDB() {
+            return new Promise((resolve, reject) => {
+                const request = indexedDB.open(DB_NAME, 1);
+                request.onerror = (e) => reject(e);
+                request.onsuccess = (e) => {
+                    db = e.target.result;
+                    resolve(db);
+                };
+                request.onupgradeneeded = (e) => {
+                    const database = e.target.result;
+                    if (!database.objectStoreNames.contains(STORE_NAME)) {
+                        database.createObjectStore(STORE_NAME, { keyPath: 'id', autoIncrement: true });
+                    }
+                };
+            });
+        }
+
+        async function saveMediaToDB(file, customName) {
+            return new Promise((resolve, reject) => {
+                const transaction = db.transaction([STORE_NAME], 'readwrite');
+                const store = transaction.objectStore(STORE_NAME);
+                
+                let fileType = 'image';
+                if (file.type.startsWith('video') || file.name.match(/\.(mp4|mov|avi|mkv|webm)$/i)) {
+                    fileType = 'video';
+                } else if (file.type.startsWith('audio') || file.name.match(/\.(mp3|wav|aac|m4a)$/i)) {
+                    fileType = 'audio';
+                }
+
+                const record = {
+                    blob: file,
+                    type: fileType,
+                    name: customName || file.name,
+                    date: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+                };
+
+                const request = store.add(record);
+                request.onsuccess = () => resolve(request.result);
+                request.onerror = (e) => reject(e);
+            });
+        }
+
+        async function getAllMediaFromDB() {
+            return new Promise((resolve, reject) => {
+                const transaction = db.transaction([STORE_NAME], 'readonly');
+                const store = transaction.objectStore(STORE_NAME);
+                const request = store.getAll();
+                request.onsuccess = () => resolve(request.result);
+                request.onerror = (e) => reject(e);
+            });
+        }
+
+        async function deleteMediaFromDB(id) {
+            return new Promise((resolve, reject) => {
+                const transaction = db.transaction([STORE_NAME], 'readwrite');
+                const store = transaction.objectStore(STORE_NAME);
+                const request = store.delete(id);
+                request.onsuccess = () => resolve();
+                request.onerror = (e) => reject(e);
+            });
+        }
+
+        async function renderGallery() {
+            const grid = document.getElementById('dynamic-gallery-grid');
+            grid.innerHTML = '';
+            
+            try {
+                const memories = await getAllMediaFromDB();
+                const filtered = memories.filter(m => activeCategoryFilter === 'all' || m.type === activeCategoryFilter);
+                
+                if (filtered.length === 0) {
+                    grid.innerHTML = `
+                        <div class="col-span-full text-center py-16 glass-panel rounded-2xl">
+                            <i class="fa-solid fa-photo-film text-4xl text-champagne-400 mb-3"></i>
+                            <h4 class="font-serif text-xl font-bold text-white">No Media Found in This Category</h4>
+                            <p class="text-champagne-300/60 text-xs mt-1">Upload files or select a PC folder above to populate your persistent vault.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                filtered.reverse().forEach((mem) => {
+                    const card = document.createElement('div');
+                    card.className = "glass-panel p-4 rounded-2xl flex flex-col justify-between group";
+                    
+                    const objectUrl = URL.createObjectURL(mem.blob);
+                    
+                    let mediaHtml = '';
+                    if (mem.type === 'video') {
+                        mediaHtml = `<video src="${objectUrl}" controls class="w-full h-64 object-cover rounded-xl bg-black"></video>`;
+                    } else if (mem.type === 'audio') {
+                        mediaHtml = `
+                            <div class="w-full h-64 bg-black/80 rounded-xl flex flex-col items-center justify-center p-6 text-center border border-champagne-500/20">
+                                <div class="w-16 h-16 bg-champagne-500/10 text-champagne-400 rounded-full flex items-center justify-center text-2xl mb-4 shadow-lg animate-pulse">
+                                    <i class="fa-solid fa-music"></i>
+                                </div>
+                                <audio src="${objectUrl}" controls class="w-full max-w-xs mt-2"></audio>
+                            </div>
+                        `;
+                    } else {
+                        mediaHtml = `<img src="${objectUrl}" alt="Memory" class="w-full h-64 object-cover rounded-xl group-hover:scale-105 transition-transform duration-500">`;
+                    }
+
+                    card.innerHTML = `
+                        <div class="relative overflow-hidden rounded-xl bg-black">
+                            ${mediaHtml}
+                            <button onclick="removeMemory(${mem.id})" class="absolute top-3 right-3 bg-black/80 hover:bg-champagne-400 hover:text-black text-champagne-300 w-8 h-8 rounded-full flex items-center justify-center text-xs transition-colors border border-champagne-500/30 z-10" title="Delete memory">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                        <div class="pt-4 px-1">
+                            <p class="font-serif text-white text-base truncate" title="${mem.name}">${mem.name}</p>
+                            <span class="text-[10px] text-champagne-400/60 font-semibold tracking-wider uppercase">${mem.type} • ${mem.date}</span>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            } catch (err) {
+                console.error("Error loading gallery:", err);
+            }
+        }
+
+        window.removeMemory = async function(id) {
+            await deleteMediaFromDB(id);
+            renderGallery();
+        };
+
+        window.filterVault = function(category) {
+            activeCategoryFilter = category;
+            document.querySelectorAll('.vault-tab').forEach(btn => {
+                btn.classList.remove('bg-champagne-400', 'text-black');
+                btn.classList.add('bg-black/50', 'text-champagne-300');
+            });
+            event.currentTarget.classList.remove('bg-black/50', 'text-champagne-300');
+            event.currentTarget.classList.add('bg-champagne-400', 'text-black');
+            renderGallery();
+        };
+
+        // File and Folder Import Handlers with Instant Autosave
+        const fileInput = document.getElementById('media-file-input');
+        const folderInput = document.getElementById('media-folder-input');
+        const uploadStatus = document.getElementById('upload-status');
+
+        async function handleFilesUpload(files) {
+            if (!files.length) return;
+            uploadStatus.classList.remove('hidden');
+
+            try {
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    // Skip hidden/system files
+                    if (file.name.startsWith('.')) continue;
+                    await saveMediaToDB(file, file.webkitRelativePath || file.name);
+                }
+                await renderGallery();
+            } catch (err) {
+                console.error("Autosave upload error:", err);
+            } finally {
+                uploadStatus.classList.add('hidden');
+                fileInput.value = '';
+                folderInput.value = '';
+            }
+        }
+
+        fileInput.addEventListener('change', (e) => handleFilesUpload(e.target.files));
+        folderInput.addEventListener('change', (e) => handleFilesUpload(e.target.files));
+
+        window.addEventListener('DOMContentLoaded', async () => {
+            try {
+                await initIndexedDB();
+                await renderGallery();
+            } catch (e) {
+                console.error("IndexedDB initialization failed:", e);
+            }
+        });
+
+        // 29 Reasons Why I Love You Data & Generation
+        const reasonsList = [
+            "Your breathtaking smile that instantly brightens my entire world.",
+            "The way your eyes crinkle when you laugh uncontrollably.",
+            "Your unwavering kindness and empathy toward everyone you meet.",
+            "How wonderfully passionate you are about your aspirations.",
+            "The comforting, secure feeling of holding your hand in mine.",
+            "Your brilliant intellect and sharp wit that keeps me fascinated.",
+            "The exquisite meals and quiet coffee mornings we share.",
+            "How complete I feel whenever I am safely in your arms.",
+            "Your infectious enthusiasm for the little moments in life.",
+            "The way you support and believe in me unconditionally.",
+            "Your refined taste and effortless elegance in everything.",
+            "The sweet handwritten notes you leave behind.",
+            "How adorable you look when you're cozy in the morning.",
+            "Your deep emotional intelligence and intuition.",
+            "The playful inside jokes only the two of us understand.",
+            "How gracefully you navigate life's unexpected turns.",
+            "Your heartwarming generosity toward our loved ones.",
+            "The adventurous spirit you bring to all our travels.",
+            "How soothing and melodic your voice is to me.",
+            "The serene peace you bring to my chaotic mind.",
+            "Your dedication to making our home a haven of warmth.",
+            "How passionate and devoted you are in all your endeavors.",
+            "The adorable way your nose scrunches when you giggle.",
+            "How intensely proud I am to be your husband.",
+            "Your remarkable patience and understanding.",
+            "The way you look at me with absolute devotion.",
+            "Your joyful dance moves in the kitchen when alone.",
+            "How you make every ordinary day feel extraordinary.",
+            "Simply because you are you—my soulmate and my eternity."
+        ];
+
+        const reasonsGrid = document.getElementById('reasons-grid');
+        reasonsList.forEach((reason, index) => {
+            const card = document.createElement('div');
+            card.className = "glass-panel p-6 rounded-2xl hover:border-champagne-400 transition-all cursor-pointer group flex flex-col justify-between";
+            card.innerHTML = `
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] tracking-[0.2em] uppercase font-semibold text-champagne-400 bg-champagne-500/10 border border-champagne-500/30 px-3 py-1 rounded-full">Reason #${index + 1}</span>
+                        <i class="fa-solid fa-gem text-champagne-400 group-hover:scale-125 transition-transform"></i>
+                    </div>
+                    <p class="font-serif text-white text-base leading-relaxed font-light">${reason}</p>
+                </div>
+                <div class="mt-6 pt-3 border-t border-champagne-500/20 text-[10px] tracking-widest uppercase text-champagne-400/60 flex items-center justify-between">
+                    <span>Tap to reflect</span>
+                    <i class="fa-solid fa-arrow-right text-champagne-400"></i>
+                </div>
+            `;
+            card.addEventListener('click', () => {
+                card.classList.toggle('bg-champagne-500/15');
+                card.classList.toggle('border-champagne-400');
+            });
+            reasonsGrid.appendChild(card);
+        });
+
+        // Birthday Wish Button
+        const wishBtn = document.getElementById('wish-btn');
+        const wishInput = document.getElementById('wish-input');
+        const wishSuccess = document.getElementById('wish-success');
+        wishBtn.addEventListener('click', () => {
+            if(wishInput.value.trim() !== '') {
+                wishSuccess.classList.remove('hidden');
+                wishInput.value = '';
+                setTimeout(() => wishSuccess.classList.add('hidden'), 5000);
+            }
+        });
+
+        // Ambient Symphony Synthesizer
+        let audioCtx = null;
+        let isPlaying = false;
+        let oscillatorInterval = null;
+        const playMusicBtn = document.getElementById('play-music-btn');
+        const musicBtnText = document.getElementById('music-btn-text');
+
+        playMusicBtn.addEventListener('click', () => {
+            if (!isPlaying) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                isPlaying = true;
+                musicBtnText.innerText = "Pause Symphony Vibe";
+                playMusicBtn.classList.add('bg-champagne-500/20');
+
+                const notes = [220.00, 277.18, 329.63, 440.00];
+                let index = 0;
+                oscillatorInterval = setInterval(() => {
+                    if(!audioCtx) return;
+                    const osc = audioCtx.createOscillator();
+                    const gainNode = audioCtx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(notes[index], audioCtx.currentTime);
+                    gainNode.gain.setValueAtTime(0.04, audioCtx.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 3.0);
+                    osc.connect(gainNode);
+                    gainNode.connect(audioCtx.destination);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 3.0);
+                    index = (index + 1) % notes.length;
+                }, 1500);
+            } else {
+                if (audioCtx) { audioCtx.close(); audioCtx = null; }
+                clearInterval(oscillatorInterval);
+                isPlaying = false;
+                musicBtnText.innerText = "Play Symphony Vibe";
+                playMusicBtn.classList.remove('bg-champagne-500/20');
+            }
+        });
+
+        // GitHub Repository Tab Switching & Code Copying
+        const filesData = {
+            html: document.getElementById('content-html').innerHTML,
+            readme: document.getElementById('content-readme').innerHTML,
+            package: document.getElementById('content-package').innerHTML,
+            gitignore: document.getElementById('content-gitignore').innerHTML
+        };
+
+        window.switchTab = function(fileKey) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-champagne-400', 'text-black', 'font-semibold');
+                btn.classList.add('text-champagne-300');
+            });
+
+            document.getElementById('content-' + fileKey).classList.remove('hidden');
+            const activeBtn = document.getElementById('tab-btn-' + fileKey);
+            activeBtn.classList.add('bg-champagne-400', 'text-black', 'font-semibold');
+            activeBtn.classList.remove('text-champagne-300');
+
+            const filenameMap = { html: 'index.html', readme: 'README.md', package: 'package.json', gitignore: '.gitignore' };
+            document.getElementById('current-filename').innerText = filenameMap[fileKey];
+        };
+
+        window.copyActiveCode = function() {
+            const activeTabContent = document.querySelector('.tab-content:not(.hidden)').innerText;
+            const copyBtnText = document.getElementById('copy-btn-text');
+            const textArea = document.createElement('textarea');
+            textArea.value = activeTabContent;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            copyBtnText.innerText = "Copied! ✨";
+            setTimeout(() => copyBtnText.innerText = "Copy Code", 2500);
+        };
+    </script>
+</body>
+</html>
