@@ -638,5 +638,46 @@
             }
         });
     </script>
+
+    <!-- Put this right before </body> at the very bottom of index.html -->
+    <script>
+        async function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            const status = document.getElementById('status');
+            
+            if (fileInput.files.length === 0) {
+                status.innerText = "Please select a file first!";
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('upload_preset', 'mamu-website'); // Your preset name
+
+            status.innerText = "Uploading to Cloudinary...";
+
+            try {
+                // REPLACE 'YOUR_CLOUD_NAME' WITH YOUR ACTUAL CLOUDINARY CLOUD NAME
+                const response = await fetch('https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.secure_url) {
+                    status.innerText = "Upload successful!";
+                    console.log("File URL:", data.secure_url);
+                    alert("File uploaded successfully! URL: " + data.secure_url);
+                } else {
+                    status.innerText = "Upload failed!";
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                status.innerText = "An error occurred during upload.";
+            }
+        }
+    </script>
 </body>
 </html>
