@@ -498,26 +498,48 @@
         const folderInput = document.getElementById('media-folder-input');
         const uploadStatus = document.getElementById('upload-status');
 
-        async function handleFilesUpload(files) {
-            if (!files.length) return;
-            uploadStatus.classList.remove('hidden');
+      async function uploadFile() {
+    const fileInput = document.getElementById('fileInput');
+    const status = document.getElementById('status');
+    
+    if (fileInput.files.length === 0) {
+        status.innerText = "Please select a file first!";
+        return;
+    }
 
-            try {
-                for (let i = 0; i < files.length; i++) {
-                    const file = files[i];
-                    if (file.name.startsWith('.')) continue;
-                    await saveMediaToDB(file, file.webkitRelativePath || file.name);
-                }
-                await renderGallery();
-            } catch (err) {
-                console.error("Autosave upload error:", err);
-            } finally {
-                uploadStatus.classList.add('hidden');
-                fileInput.value = '';
-                folderInput.value = '';
-            }
+    const file = fileInput.files[0];
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', 'mamu-website'); //[cite: 2]
+
+    status.innerText = "Uploading...";
+
+    try {
+        const response = await fetch('https://api.cloudinary.com/v1_1/ctpimwwr/upload', {
+            method: 'POST',
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.secure_url) {
+            status.innerText = "Upload successful!";
+            
+            // This part displays the uploaded photo directly on the page!
+            const img = document.createElement('img');
+            img.src = data.secure_url;
+            img.width = 200; // Adjust size as needed
+            img.style.margin = "10px";
+            document.body.appendChild(img);
+            
+        } else {
+            status.innerText = "Upload failed!";
         }
-
+    } catch (error) {
+        console.error("Error:", error);
+        status.innerText = "An error occurred during upload.";
+    }
+}
         fileInput.addEventListener('change', (e) => handleFilesUpload(e.target.files));
         folderInput.addEventListener('change', (e) => handleFilesUpload(e.target.files));
 
