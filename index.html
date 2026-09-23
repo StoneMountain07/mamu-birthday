@@ -179,10 +179,10 @@
             </div>
 
             <div class="flex flex-wrap justify-center gap-3 mb-12">
-                <button onclick="filterVault('all')" class="vault-tab active-tab bg-champagne-400 text-black px-6 py-2.5 rounded-full text-xs font-semibold tracking-widest uppercase transition-all">All Media</button>
-                <button onclick="filterVault('image')" class="vault-tab bg-black/50 border border-champagne-500/30 text-champagne-300 px-6 py-2.5 rounded-full text-xs font-semibold tracking-widest uppercase transition-all">Photos</button>
-                <button onclick="filterVault('video')" class="vault-tab bg-black/50 border border-champagne-500/30 text-champagne-300 px-6 py-2.5 rounded-full text-xs font-semibold tracking-widest uppercase transition-all">Videos</button>
-                <button onclick="filterVault('audio')" class="vault-tab bg-black/50 border border-champagne-500/30 text-champagne-300 px-6 py-2.5 rounded-full text-xs font-semibold tracking-widest uppercase transition-all">Audio</button>
+                <button onclick="filterVault('all', this)" class="vault-tab active-tab bg-champagne-400 text-black px-6 py-2.5 rounded-full text-xs font-semibold tracking-widest uppercase transition-all">All Media</button>
+                <button onclick="filterVault('image', this)" class="vault-tab bg-black/50 border border-champagne-500/30 text-champagne-300 px-6 py-2.5 rounded-full text-xs font-semibold tracking-widest uppercase transition-all">Photos</button>
+                <button onclick="filterVault('video', this)" class="vault-tab bg-black/50 border border-champagne-500/30 text-champagne-300 px-6 py-2.5 rounded-full text-xs font-semibold tracking-widest uppercase transition-all">Videos</button>
+                <button onclick="filterVault('audio', this)" class="vault-tab bg-black/50 border border-champagne-500/30 text-champagne-300 px-6 py-2.5 rounded-full text-xs font-semibold tracking-widest uppercase transition-all">Audio</button>
             </div>
 
             <div id="dynamic-gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
@@ -333,146 +333,126 @@
         setInterval(updateCounter, 1000);
         updateCounter();
 
-        const DB_NAME = 'BirthdayVaultDB';
-        const STORE_NAME = 'universalMediaVault';
-        let db = null;
+        const CLOUDINARY_CLOUD_NAME = 'YOUR_CLOUD_NAME';
+        const CLOUDINARY_UPLOAD_PRESET = 'YOUR_UPLOAD_PRESET';
+        const STORAGE_KEY = 'birthday-vault-media';
+        let uploadedMedia = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
         let activeCategoryFilter = 'all';
 
-        function initIndexedDB() {
-            return new Promise((resolve, reject) => {
-                const request = indexedDB.open(DB_NAME, 1);
-                request.onerror = (e) => reject(e);
-                request.onsuccess = (e) => {
-                    db = e.target.result;
-                    resolve(db);
-                };
-                request.onupgradeneeded = (e) => {
-                    const database = e.target.result;
-                    if (!database.objectStoreNames.contains(STORE_NAME)) {
-                        database.createObjectStore(STORE_NAME, { keyPath: 'id', autoIncrement: true });
-                    }
-                };
-            });
+        function getMediaType(file) {
+            if (file.type.startsWith('video/') || /(mp4|mov|avi|mkv|webm)$/i.test(file.name)) return 'video';
+            if (file.type.startsWith('audio/') || /(mp3|wav|aac|m4a)$/i.test(file.name)) return 'audio';
+            return 'image';
         }
 
-        async function saveMediaToDB(file, customName) {
-            return new Promise((resolve, reject) => {
-                const transaction = db.transaction([STORE_NAME], 'readwrite');
-                const store = transaction.objectStore(STORE_NAME);
+        async function uploadToCloudinary(file) {
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
 
-                let fileType = 'image';
-                if (file.type.startsWith('video') || file.name.match(/\.(mp4|mov|avi|mkv|webm)$/i)) {
-                    fileType = 'video';
-                } else if (file.type.startsWith('audio') || file.name.match(/\.(mp3|wav|aac|m4a)$/i)) {
-                    fileType = 'audio';
-                }
-
-                const record = {
-                    blob: file,
-                    type: fileType,
-                    name: customName || file.name,
-                    date: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-                };
-
-                const request = store.add(record);
-                request.onsuccess = () => resolve(request.result);
-                request.onerror = (e) => reject(e);
+            const response = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/auto/upload`, {
+                method: 'POST',
+                body: formData
             });
+
+            const result = await response.json();
+            if (!response.ok || !result.secure_url) {
+                throw new Error(result.error?.message || 'Cloudinary upload failed.');
+            }
+
+            return {
+                id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+                name: file.name,
+                type: getMediaType(file),
+                url: result.secure_url,
+                date: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+            };
         }
 
-        async function getAllMediaFromDB() {
-            return new Promise((resolve, reject) => {
-                const transaction = db.transaction([STORE_NAME], 'readonly');
-                const store = transaction.objectStore(STORE_NAME);
-                const request = store.getAll();
-                request.onsuccess = () => resolve(request.result);
-                request.onerror = (e) => reject(e);
-            });
-        }
-
-        async function deleteMediaFromDB(id) {
-            return new Promise((resolve, reject) => {
-                const transaction = db.transaction([STORE_NAME], 'readwrite');
-                const store = transaction.objectStore(STORE_NAME);
-                const request = store.delete(id);
-                request.onsuccess = () => resolve();
-                request.onerror = (e) => reject(e);
-            });
-        }
-
-        async function renderGallery() {
+        function renderGalleryFromMedia(mediaList) {
             const grid = document.getElementById('dynamic-gallery-grid');
             grid.innerHTML = '';
 
-            try {
-                const memories = await getAllMediaFromDB();
-                const filtered = memories.filter(m => activeCategoryFilter === 'all' || m.type === activeCategoryFilter);
+            if (!mediaList || mediaList.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-16 glass-panel rounded-2xl">
+                        <i class="fa-solid fa-photo-film text-4xl text-champagne-400 mb-3"></i>
+                        <h4 class="font-serif text-xl font-bold text-white">No Media Found in This Category</h4>
+                        <p class="text-champagne-300/60 text-xs mt-1">Upload files or a folder above to populate your archive.</p>
+                    </div>
+                `;
+                return;
+            }
 
-                if (filtered.length === 0) {
-                    grid.innerHTML = `
-                        <div class="col-span-full text-center py-16 glass-panel rounded-2xl">
-                            <i class="fa-solid fa-photo-film text-4xl text-champagne-400 mb-3"></i>
-                            <h4 class="font-serif text-xl font-bold text-white">No Media Found in This Category</h4>
-                            <p class="text-champagne-300/60 text-xs mt-1">Upload files or select a directory above to begin building your archive.</p>
+            const filtered = mediaList.filter(item => activeCategoryFilter === 'all' || item.type === activeCategoryFilter);
+
+            if (!filtered.length) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-16 glass-panel rounded-2xl">
+                        <i class="fa-solid fa-photo-film text-4xl text-champagne-400 mb-3"></i>
+                        <h4 class="font-serif text-xl font-bold text-white">No Media Found in This Category</h4>
+                        <p class="text-champagne-300/60 text-xs mt-1">Upload files or select another media type above to continue.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.slice().reverse().forEach((media) => {
+                const card = document.createElement('div');
+                card.className = 'glass-panel p-4 rounded-2xl flex flex-col justify-between group';
+
+                let mediaHtml = '';
+                if (media.type === 'video') {
+                    mediaHtml = `<video src="${media.url}" controls class="w-full h-64 object-cover rounded-xl bg-black"></video>`;
+                } else if (media.type === 'audio') {
+                    mediaHtml = `
+                        <div class="w-full h-64 bg-black/80 rounded-xl flex flex-col items-center justify-center p-6 text-center border border-champagne-500/20">
+                            <div class="w-16 h-16 bg-champagne-500/10 text-champagne-400 rounded-full flex items-center justify-center text-2xl mb-4 shadow-lg animate-pulse">
+                                <i class="fa-solid fa-music"></i>
+                            </div>
+                            <audio src="${media.url}" controls class="w-full max-w-xs mt-2"></audio>
                         </div>
                     `;
-                    return;
+                } else {
+                    mediaHtml = `<img src="${media.url}" alt="${media.name}" class="w-full h-64 object-cover rounded-xl group-hover:scale-105 transition-transform duration-500">`;
                 }
 
-                filtered.reverse().forEach((mem) => {
-                    const card = document.createElement('div');
-                    card.className = 'glass-panel p-4 rounded-2xl flex flex-col justify-between group';
-
-                    const objectUrl = URL.createObjectURL(mem.blob);
-                    let mediaHtml = '';
-
-                    if (mem.type === 'video') {
-                        mediaHtml = `<video src="${objectUrl}" controls class="w-full h-64 object-cover rounded-xl bg-black"></video>`;
-                    } else if (mem.type === 'audio') {
-                        mediaHtml = `
-                            <div class="w-full h-64 bg-black/80 rounded-xl flex flex-col items-center justify-center p-6 text-center border border-champagne-500/20">
-                                <div class="w-16 h-16 bg-champagne-500/10 text-champagne-400 rounded-full flex items-center justify-center text-2xl mb-4 shadow-lg animate-pulse">
-                                    <i class="fa-solid fa-music"></i>
-                                </div>
-                                <audio src="${objectUrl}" controls class="w-full max-w-xs mt-2"></audio>
-                            </div>
-                        `;
-                    } else {
-                        mediaHtml = `<img src="${objectUrl}" alt="Memory" class="w-full h-64 object-cover rounded-xl group-hover:scale-105 transition-transform duration-500">`;
-                    }
-
-                    card.innerHTML = `
-                        <div class="relative overflow-hidden rounded-xl bg-black">
-                            ${mediaHtml}
-                            <button onclick="removeMemory(${mem.id})" class="absolute top-3 right-3 bg-black/80 hover:bg-champagne-400 hover:text-black text-champagne-300 w-8 h-8 rounded-full flex items-center justify-center text-xs transition-colors" title="Delete memory">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </div>
-                        <div class="pt-4 px-1">
-                            <p class="font-serif text-white text-base truncate" title="${mem.name}">${mem.name}</p>
-                            <span class="text-[10px] text-champagne-400/60 font-semibold tracking-wider uppercase">${mem.type} • ${mem.date}</span>
-                        </div>
-                    `;
-                    grid.appendChild(card);
-                });
-            } catch (err) {
-                console.error('Error loading gallery:', err);
-            }
+                card.innerHTML = `
+                    <div class="relative overflow-hidden rounded-xl bg-black">
+                        ${mediaHtml}
+                        <button onclick="removeMemory('${media.id}')" class="absolute top-3 right-3 bg-black/80 hover:bg-champagne-400 hover:text-black text-champagne-300 w-8 h-8 rounded-full flex items-center justify-center text-xs transition-colors" title="Delete memory">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                    <div class="pt-4 px-1">
+                        <p class="font-serif text-white text-base truncate" title="${media.name}">${media.name}</p>
+                        <span class="text-[10px] text-champagne-400/60 font-semibold tracking-wider uppercase">${media.type} • ${media.date}</span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
         }
 
-        window.removeMemory = async function(id) {
-            await deleteMediaFromDB(id);
+        function renderGallery() {
+            renderGalleryFromMedia(uploadedMedia);
+        }
+
+        window.removeMemory = function(id) {
+            uploadedMedia = uploadedMedia.filter(item => item.id !== id);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(uploadedMedia));
             renderGallery();
         };
 
-        window.filterVault = function(category) {
+        window.filterVault = function(category, buttonEl) {
             activeCategoryFilter = category;
             document.querySelectorAll('.vault-tab').forEach(btn => {
                 btn.classList.remove('bg-champagne-400', 'text-black');
                 btn.classList.add('bg-black/50', 'text-champagne-300');
             });
-            event.currentTarget.classList.remove('bg-black/50', 'text-champagne-300');
-            event.currentTarget.classList.add('bg-champagne-400', 'text-black');
+            if (buttonEl) {
+                buttonEl.classList.remove('bg-black/50', 'text-champagne-300');
+                buttonEl.classList.add('bg-champagne-400', 'text-black');
+            }
             renderGallery();
         };
 
@@ -484,35 +464,38 @@
             if (!files || files.length === 0) return;
 
             try {
-                if (!db) {
-                    await initIndexedDB();
-                }
-
                 uploadStatus.classList.remove('hidden');
                 uploadStatus.innerHTML = `
                     <i class="fa-solid fa-spinner fa-spin mr-2"></i>
-                    Saving ${files.length} file${files.length === 1 ? '' : 's'} to archive...
+                    Uploading ${files.length} file${files.length === 1 ? '' : 's'} to Cloudinary...
                 `;
 
-                let savedCount = 0;
-
-                for (const file of Array.from(files)) {
+                const supportedFiles = Array.from(files).filter(file => {
                     const isSupported =
                         file.type.startsWith('image/') ||
                         file.type.startsWith('video/') ||
                         file.type.startsWith('audio/') ||
-                        /\.(heic|heif|mkv|avi|mov|mp4|webm|mp3|wav|aac|m4a)$/i.test(file.name);
+                        /(heic|heif|mkv|avi|mov|mp4|webm|mp3|wav|aac|m4a)$/i.test(file.name);
+                    return isSupported;
+                });
 
-                    if (!isSupported) continue;
-                    await saveMediaToDB(file);
-                    savedCount++;
+                if (!supportedFiles.length) {
+                    throw new Error('No supported image, video, or audio file selected.');
                 }
 
-                await renderGallery();
+                const uploadedNewMedia = [];
+                for (const file of supportedFiles) {
+                    const item = await uploadToCloudinary(file);
+                    uploadedNewMedia.push(item);
+                }
+
+                uploadedMedia = [...uploadedMedia, ...uploadedNewMedia];
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(uploadedMedia));
+                renderGallery();
 
                 uploadStatus.innerHTML = `
                     <i class="fa-solid fa-circle-check mr-2"></i>
-                    ${savedCount} file${savedCount === 1 ? '' : 's'} saved successfully.
+                    ${uploadedNewMedia.length} file${uploadedNewMedia.length === 1 ? '' : 's'} uploaded successfully.
                 `;
 
                 setTimeout(() => {
@@ -523,7 +506,7 @@
                 uploadStatus.classList.remove('hidden');
                 uploadStatus.innerHTML = `
                     <i class="fa-solid fa-circle-exclamation mr-2"></i>
-                    Upload failed: ${error.message || 'Unable to save files.'}
+                    Upload failed: ${error.message || 'Unable to upload files.'}
                 `;
             } finally {
                 fileInput.value = '';
@@ -534,14 +517,11 @@
         fileInput.addEventListener('change', (e) => handleFilesUpload(e.target.files));
         folderInput.addEventListener('change', (e) => handleFilesUpload(e.target.files));
 
-        window.addEventListener('DOMContentLoaded', async () => {
-            try {
-                await initIndexedDB();
-                await renderGallery();
-            } catch (e) {
-                console.error('IndexedDB initialization failed:', e);
-            }
-        });
+        if (CLOUDINARY_CLOUD_NAME === 'YOUR_CLOUD_NAME' || CLOUDINARY_UPLOAD_PRESET === 'YOUR_UPLOAD_PRESET') {
+            console.warn('Cloudinary is not configured yet. Update CLOUDINARY_CLOUD_NAME and CLOUDINARY_UPLOAD_PRESET in the script block.');
+        }
+
+        renderGallery();
 
         const reasonsList = [
             'Your breathtaking smile that instantly brightens every room you enter.',
