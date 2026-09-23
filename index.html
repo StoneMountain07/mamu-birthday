@@ -61,7 +61,6 @@
                 <a href="#vault" class="hover:text-champagne-300 transition-colors font-semibold text-champagne-400">Media Vault ✨</a>
                 <a href="#reasons" class="hover:text-champagne-300 transition-colors">29 Reasons</a>
                 <a href="#letter" class="hover:text-champagne-300 transition-colors">Love Letter</a>
-                <a href="#github-deploy" class="text-champagne-200 font-semibold hover:text-white flex items-center gap-1.5 bg-champagne-500/10 border border-champagne-500/30 px-4 py-2 rounded-full"><i class="fa-brands fa-github"></i> GitHub Repositories</a>
             </div>
             <button id="mobile-menu-btn" class="lg:hidden text-champagne-200 text-xl focus:outline-none">
                 <i class="fa-solid fa-bars"></i>
@@ -108,10 +107,10 @@
                 <p class="text-champagne-300/70 font-light mt-3 text-sm max-w-lg mx-auto">Every second of your existence brings boundless light into this world. Here is your live milestone counter:</p>
             </div>
 
-     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
                 <div class="glass-panel p-8 rounded-2xl text-center">
                     <span id="days-count" class="font-serif text-4xl sm:text-6xl font-bold text-champagne-300 block mb-2">0</span>
-                    <span class="text-[10px] uppercase tracking-[0.2em] text-champagne-400/80 font-semibold">Days to Nov 3</span>
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-champagne-400/80 font-semibold">Days Cherished</span>
                 </div>
                 <div class="glass-panel p-8 rounded-2xl text-center">
                     <span id="hours-count" class="font-serif text-4xl sm:text-6xl font-bold text-champagne-300 block mb-2">0</span>
@@ -123,7 +122,7 @@
                 </div>
                 <div class="glass-panel p-8 rounded-2xl text-center">
                     <span id="secs-count" class="font-serif text-4xl sm:text-6xl font-bold text-champagne-300 block mb-2">0</span>
-                    <span class="text-[10px] uppercase tracking-[0.2em] text-champagne-400/80 font-semibold">Seconds Left</span>
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-champagne-400/80 font-semibold">Seconds of Joy</span>
                 </div>
             </div>
 
@@ -322,126 +321,6 @@
         </div>
     </section>
 
-    <section id="github-deploy" class="py-28 px-6 bg-[#070707] text-white relative z-10 border-t border-champagne-500/30">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <span class="text-champagne-400 text-xs tracking-[0.25em] uppercase font-semibold"><i class="fa-brands fa-github mr-1"></i> Open Source Repository Package</span>
-                <h2 class="font-serif text-4xl sm:text-5xl font-bold text-white mt-3">GitHub Repository Files</h2>
-                <p class="text-champagne-300/70 font-light mt-3 text-sm max-w-2xl mx-auto">Switch between repository files below to copy or download them for your GitHub project and publish on GitHub Pages for free.</p>
-            </div>
-
-            <!-- Tabbed Code Section -->
-            <div class="bg-[#0f0f0f] rounded-2xl border border-champagne-500/30 overflow-hidden shadow-2xl">
-                <div class="flex flex-wrap items-center justify-between bg-[#161616] px-6 py-4 border-b border-champagne-500/20 gap-4">
-                    <div class="flex items-center space-x-2">
-                        <div class="w-3 h-3 rounded-full bg-rose-500"></div>
-                        <div class="w-3 h-3 rounded-full bg-amber-500"></div>
-                        <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
-                        <span class="ml-4 text-xs font-mono text-champagne-300" id="current-filename">index.html</span>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <div class="flex space-x-1 bg-black/40 p-1 rounded-xl border border-champagne-500/20">
-                            <button onclick="switchTab('html')" id="tab-btn-html" class="tab-btn px-4 py-1.5 rounded-lg text-xs font-mono bg-champagne-400 text-black font-semibold transition-all">index.html</button>
-                            <button onclick="switchTab('readme')" id="tab-btn-readme" class="tab-btn px-4 py-1.5 rounded-lg text-xs font-mono text-champagne-300 hover:text-white transition-all">README.md</button>
-                            <button onclick="switchTab('package')" id="tab-btn-package" class="tab-btn px-4 py-1.5 rounded-lg text-xs font-mono text-champagne-300 hover:text-white transition-all">package.json</button>
-                            <button onclick="switchTab('gitignore')" id="tab-btn-gitignore" class="tab-btn px-4 py-1.5 rounded-lg text-xs font-mono text-champagne-300 hover:text-white transition-all">.gitignore</button>
-                        </div>
-                        <button onclick="copyActiveCode()" class="bg-[#222] hover:bg-[#333] text-champagne-200 text-xs px-4 py-2 rounded-lg border border-champagne-500/30 flex items-center gap-2 transition-all shadow">
-                            <i class="fa-regular fa-copy"></i> <span id="copy-btn-text">Copy Code</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="relative">
-                    <!-- Tab Content HTML -->
-                    <div id="content-html" class="tab-content p-6 overflow-x-auto text-champagne-300/90 font-mono text-xs leading-relaxed max-h-96">
-                        <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="en" class="scroll-smooth"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Happy 29th Birthday My Love&lt;/title&gt;
-    &lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;
-&lt;/head&gt;
-&lt;body class="bg-[#0b0b0b] text-[#e8e0d5] font-sans"&gt;
-    &lt;h1 class="text-4xl text-center mt-20 font-serif"&gt;Happy 29th Birthday, My Wife!&lt;/h1&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-                    </div>
-                    <!-- Tab Content README -->
-                    <div id="content-readme" class="tab-content hidden p-6 overflow-x-auto text-champagne-300/90 font-mono text-xs leading-relaxed max-h-96">
-                        <pre><code># 🎂 Happy 29th Birthday Website for My Wife
-
-An executive luxury, single-file interactive website created to celebrate my wife's 29th birthday. Features universal media vault support (photos, videos, and audio), folder import from PC, IndexedDB autosave persistence, milestone countdown tracker, 29 reasons cards, and ambient music.
-
-## ✨ Features
-- **Executive Design:** Deep black, brushed gold, and soft champagne color palette with Cinzel typography.
-- **Universal Media Vault:** Supports all photo, video, and audio formats (HEIC, PNG, JPG, WEBP, MP4, MOV, AVI, MKV, WebM, MP3, WAV, AAC, M4A).
-- **Dual Import Options:** Individual file picker and batch folder import (`webkitdirectory`).
-- **Instant Autosave:** IndexedDB browser database guarantees zero data loss on refresh.
-- **Interactive Player:** Built-in audio and video players with category tabs.
-- **GitHub Pages Ready:** Deploy in under 2 minutes.
-
-## 🚀 Quick Deployment
-1. Clone this repository or download `index.html`.
-2. Push to your GitHub repository (e.g., `birthday-for-wife`).
-3. Enable **GitHub Pages** in your repository settings under the `main` branch.
-4. Enjoy your live website!
-</code></pre>
-                    </div>
-                    <!-- Tab Content Package -->
-                    <div id="content-package" class="tab-content hidden p-6 overflow-x-auto text-champagne-300/90 font-mono text-xs leading-relaxed max-h-96">
-                        <pre><code>{
-  "name": "wife-29th-birthday-website",
-  "version": "1.0.0",
-  "description": "Luxurious 29th birthday website with IndexedDB media vault and PC folder import",
-  "main": "index.html",
-  "scripts": {
-    "start": "npx serve"
-  },
-  "keywords": [
-    "birthday",
-    "github-pages",
-    "luxury",
-    "indexeddb"
-  ],
-  "author": "Devoted Husband",
-  "license": "MIT",
-  "dependencies": {
-    "tailwindcss": "^3.3.0",
-    "font-awesome": "^6.4.0"
-  }
-}</code></pre>
-                    </div>
-                    <!-- Tab Content Gitignore -->
-                    <div id="content-gitignore" class="tab-content hidden p-6 overflow-x-auto text-champagne-300/90 font-mono text-xs leading-relaxed max-h-96">
-                        <pre><code># Dependency directories
-node_modules/
-jspm_packages/
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# IDE files
-.vscode/
-.idea/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.swp
-</code></pre>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <footer class="bg-black text-champagne-400/60 py-12 text-center text-xs tracking-[0.2em] uppercase border-t border-champagne-500/20 relative z-10">
         <p>Crafted with absolute devotion for my wife on her 29th birthday ✨</p>
     </footer>
@@ -626,7 +505,6 @@ Thumbs.db
             try {
                 for (let i = 0; i < files.length; i++) {
                     const file = files[i];
-                    // Skip hidden/system files
                     if (file.name.startsWith('.')) continue;
                     await saveMediaToDB(file, file.webkitRelativePath || file.name);
                 }
@@ -759,43 +637,6 @@ Thumbs.db
                 playMusicBtn.classList.remove('bg-champagne-500/20');
             }
         });
-
-        // GitHub Repository Tab Switching & Code Copying
-        const filesData = {
-            html: document.getElementById('content-html').innerHTML,
-            readme: document.getElementById('content-readme').innerHTML,
-            package: document.getElementById('content-package').innerHTML,
-            gitignore: document.getElementById('content-gitignore').innerHTML
-        };
-
-        window.switchTab = function(fileKey) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('bg-champagne-400', 'text-black', 'font-semibold');
-                btn.classList.add('text-champagne-300');
-            });
-
-            document.getElementById('content-' + fileKey).classList.remove('hidden');
-            const activeBtn = document.getElementById('tab-btn-' + fileKey);
-            activeBtn.classList.add('bg-champagne-400', 'text-black', 'font-semibold');
-            activeBtn.classList.remove('text-champagne-300');
-
-            const filenameMap = { html: 'index.html', readme: 'README.md', package: 'package.json', gitignore: '.gitignore' };
-            document.getElementById('current-filename').innerText = filenameMap[fileKey];
-        };
-
-        window.copyActiveCode = function() {
-            const activeTabContent = document.querySelector('.tab-content:not(.hidden)').innerText;
-            const copyBtnText = document.getElementById('copy-btn-text');
-            const textArea = document.createElement('textarea');
-            textArea.value = activeTabContent;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textArea);
-            copyBtnText.innerText = "Copied! ✨";
-            setTimeout(() => copyBtnText.innerText = "Copy Code", 2500);
-        };
     </script>
 </body>
 </html>
