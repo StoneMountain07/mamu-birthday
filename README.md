@@ -1,5 +1,10 @@
 # 🎂 Happy 29th Birthday Website for My Wife
 
+## Shared Media Setup
+Run the contents of `supabase-schema.sql` in the Supabase SQL Editor once. The website uploads the original files to Cloudinary and stores their public URLs in Supabase, so every visitor sees the same gallery.
+
+The browser uses the Supabase publishable key from `.env.local` as configuration reference. Since this is a static HTML site, the public values are also configured in the page script. Never place a Supabase service-role key in the browser.
+
 An executive luxury, single-file interactive website created to celebrate my wife's 29th birthday. Features universal media vault support (photos, videos, and audio), folder import from PC, IndexedDB autosave persistence, milestone countdown tracker, 29 reasons cards, and ambient music.
 
 ## ✨ Features
