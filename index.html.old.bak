@@ -1,0 +1,52 @@
+const MEDIA_API_URL = '/api/media';
+
+async function loadSharedMedia() {
+  const response = await fetch(`${MEDIA_API_URL}?select=id,name,type,url,created_at&order=created_at.asc`, {
+    headers: { 'Content-Type': 'application/json' },
+    mode: 'same-origin'
+  });
+
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(`Shared vault unavailable (${response.status}): ${text || response.statusText}`);
+  }
+
+  media = await response.json();
+  return media;
+}
+
+async function saveSharedMedia(item) {
+  const response = await fetch(MEDIA_API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: item.name,
+      type: item.type,
+      url: item.url
+    }),
+    mode: 'same-origin'
+  });
+
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(`Shared vault save failed (${response.status}): ${text || response.statusText}`);
+  }
+
+  const data = await response.json();
+  return Array.isArray(data) ? (data[0] || data) : data;
+}
+
+async function deleteSharedMedia(id) {
+  const response = await fetch(`${MEDIA_API_URL}?id=${encodeURIComponent(id)}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    mode: 'same-origin'
+  });
+
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(`Shared vault delete failed (${response.status}): ${text || response.statusText}`);
+  }
+
+  return true;
+}
