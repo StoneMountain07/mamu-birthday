@@ -7,27 +7,28 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    body{font-family:'Plus Jakarta Sans',sans-serif;background:#0b0b0b;color:#e8e0d5}.serif{font-family:Cinzel,serif}.gold{color:#b8a183}.panel{background:#121212cc;border:1px solid #b8a18333;backdrop-filter:blur(10px)}.flip-card{perspective:1000px;cursor:pointer;height:200px}.flip-card-inner{position:relative;width:100%;height:100%;text-align:center;transition:transform .6s;transform-style:preserve-3d}.flip-card.flipped .flip-card-inner{transform:rotateY(180deg)}.flip-card-front,.flip-card-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;display:flex;align-items:center;justify-content:center;border-radius:.75rem}.flip-card-front{background:#121212cc;border:1px solid #b8a18333}.flip-card-back{background:#1a1a1a;border:1px solid #8b7355;transform:rotateY(180deg)}.fireworks{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:10}.particle{position:fixed;pointer-events:none;font-size:1.5rem}.loading-spin{animation:spin 1s linear infinite}@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+    body{font-family:'Plus Jakarta Sans',sans-serif;background:#0b0b0b;color:#e8e0d5}.serif{font-family:Cinzel,serif}.gold{color:#b8a183}.panel{background:#121212cc;border:1px solid #b8a18333;backdrop-filter:blur(10px);border-radius:.5rem}.fireworks{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999}.particle{position:fixed;font-size:1.5rem;pointer-events:none}@keyframes float{0%{opacity:1;transform:translate(0,0)}100%{opacity:0}}.flip-card{cursor:pointer;perspective:1000px;transition:transform .6s}.flip-card.flipped{transform:rotateY(180deg)}.flip-card-inner{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}.flip-card.flipped .flip-card-inner{transform:rotateY(180deg)}.flip-card-front,.flip-card-back{position:absolute;width:100%;height:100%;backface-visibility:hidden}.flip-card-back{transform:rotateY(180deg)}
   </style>
 </head>
 <body>
   <div id="fireworks" class="fireworks" aria-hidden="true"></div>
   <nav class="sticky top-0 z-20 border-b border-[#b8a18333] bg-[#0b0b0bdd] px-6 py-5 backdrop-blur-md">
     <div class="mx-auto flex max-w-6xl items-center justify-between"><a href="#home" class="serif gold font-bold tracking-[.2em]">29TH BIRTHDAY</a><button id="menu-toggle" class="gold text-xl md:hidden">☰</button>
-      <div id="site-menu" class="hidden absolute top-full left-0 right-0 bg-[#0b0b0bdd] border-b border-[#b8a18333] flex-col gap-4 px-6 py-4 md:static md:flex md:flex-row md:gap-8 md:border-0 md:bg-transparent md:p-0"><a href="#home" class="gold hover:text-white transition">Home</a><a href="#milestone" class="gold hover:text-white transition">Milestones</a><a href="#vault" class="gold hover:text-white transition">Media Vault</a><a href="#reasons" class="gold hover:text-white transition">Reasons</a><a href="#letter" class="gold hover:text-white transition">Letter</a></div>
+      <div id="site-menu" class="hidden absolute top-full left-0 right-0 bg-[#0b0b0bdd] border-b border-[#b8a18333] flex-col gap-4 px-6 py-4 md:static md:flex md:flex-row md:gap-8 md:border-0 md:bg-transparent md:p-0"><a href="#home" class="text-sm uppercase tracking-widest text-[#d4c5b1] hover:text-[#b8a183] transition">Home</a><a href="#milestone" class="text-sm uppercase tracking-widest text-[#d4c5b1] hover:text-[#b8a183] transition">Milestone</a><a href="#vault" class="text-sm uppercase tracking-widest text-[#d4c5b1] hover:text-[#b8a183] transition">Vault</a><a href="#reasons" class="text-sm uppercase tracking-widest text-[#d4c5b1] hover:text-[#b8a183] transition">Reasons</a><a href="#letter" class="text-sm uppercase tracking-widest text-[#d4c5b1] hover:text-[#b8a183] transition">Letter</a></div>
     </div>
   </nav>
   <main>
-    <section id="home" class="px-6 py-32 text-center"><p class="gold mb-6 text-xs uppercase tracking-[.3em]">Celebrating 29 Years</p><h1 class="serif text-5xl font-bold text-white md:text-7xl">Happy Birthday!</h1><p class="text-[#d4c5b1aa] mt-6 text-lg">🎂 Only <span id="days-count" class="gold font-bold">0</span> days until the big day</p><div class="mt-12 flex justify-center gap-4"><button id="music-toggle" class="px-6 py-3 bg-[#b8a183] hover:bg-[#a89570] text-black font-bold rounded-lg transition">🎵 Play Music</button></div></section>
-    <section id="milestone" class="border-y border-[#b8a18333] bg-[#111111] px-6 py-24"><div class="mx-auto max-w-5xl"><div class="mb-12 text-center"><p class="gold text-xs uppercase tracking-[.25em]">Life Milestone</p><h2 class="serif text-4xl font-bold text-white">29 Years of Joy</h2></div><div class="grid gap-8 md:grid-cols-3"><div class="panel rounded-2xl p-8 text-center"><div class="serif text-4xl gold mb-2">🎓</div><h3 class="serif text-xl font-bold mb-2">Growth</h3><p class="text-[#d4c5b1aa]">Each year brings wisdom and new experiences.</p></div><div class="panel rounded-2xl p-8 text-center"><div class="serif text-4xl gold mb-2">❤️</div><h3 class="serif text-xl font-bold mb-2">Love</h3><p class="text-[#d4c5b1aa]">Surrounded by people who cherish you deeply.</p></div><div class="panel rounded-2xl p-8 text-center"><div class="serif text-4xl gold mb-2">✨</div><h3 class="serif text-xl font-bold mb-2">Dreams</h3><p class="text-[#d4c5b1aa]">Your best years are still ahead of you.</p></div></div></div></section>
-    <section id="vault" class="border-y border-[#b8a18333] px-6 py-24"><div class="mx-auto max-w-6xl"><div class="mb-12 text-center"><p class="gold text-xs uppercase tracking-[.25em]">Secure Media Vault</p><h2 class="serif text-4xl font-bold text-white">Share Your Memories</h2></div>
-      <div class="mx-auto grid max-w-3xl gap-6 md:grid-cols-2"><label class="panel cursor-pointer rounded-2xl p-8 text-center hover:border-[#b8a183] transition"><input id="media-file-input" type="file" multiple accept="image/*,video/*,audio/*" class="hidden"><div class="text-4xl mb-3">📁</div><div class="serif font-bold text-white">Select Files</div><div class="text-xs text-[#d4c5b1aa] mt-2">Images, videos, or audio</div></label><label class="panel cursor-pointer rounded-2xl p-8 text-center hover:border-[#b8a183] transition"><input id="media-folder-input" type="file" multiple webkitdirectory directory mozdirectory class="hidden"><div class="text-4xl mb-3">📂</div><div class="serif font-bold text-white">Select Folder</div><div class="text-xs text-[#d4c5b1aa] mt-2">Bulk import all files</div></label></div>
+    <section id="home" class="px-6 py-32 text-center"><p class="gold mb-6 text-xs uppercase tracking-[.3em]">Celebrating 29 Years</p><h1 class="serif text-5xl font-bold text-white md:text-7xl">Happy 29th Birthday</h1><p class="mt-6 text-lg text-[#d4c5b1]">To my beautiful wife</p><p class="mt-12 text-2xl font-bold text-[#b8a183]"><span id="days-count">0</span> days to go</p></section>
+    <section id="milestone" class="border-y border-[#b8a18333] bg-[#111111] px-6 py-24"><div class="mx-auto max-w-5xl"><div class="mb-12 text-center"><p class="gold text-xs uppercase tracking-[.25em]">Milestone</p><h2 class="serif mt-3 text-3xl font-bold text-white md:text-5xl">29 Years of You</h2></div><div class="grid gap-8 md:grid-cols-3"><article class="panel rounded-2xl p-8 text-center"><p class="gold text-4xl font-bold mb-2">29</p><p class="text-sm text-[#d4c5b1]">Years of joy</p></article><article class="panel rounded-2xl p-8 text-center"><p class="gold text-4xl font-bold mb-2">∞</p><p class="text-sm text-[#d4c5b1]">Moments together</p></article><article class="panel rounded-2xl p-8 text-center"><p class="gold text-4xl font-bold mb-2">💕</p><p class="text-sm text-[#d4c5b1]">Love unlimited</p></article></div></div></section>
+    <section id="vault" class="border-y border-[#b8a18333] px-6 py-24"><div class="mx-auto max-w-6xl"><div class="mb-12 text-center"><p class="gold text-xs uppercase tracking-[.25em]">Secure Media Vault</p><h2 class="serif mt-3 text-3xl font-bold text-white md:text-5xl">Our Memories</h2><p class="mt-4 text-sm text-[#d4c5b1]">Upload photos, videos, and audio to share your memories</p></div>
+      <div class="mx-auto grid max-w-3xl gap-6 md:grid-cols-2"><label class="panel cursor-pointer rounded-2xl p-8 text-center hover:border-[#b8a183] transition"><input id="media-file-input" type="file" multiple accept="image/*,video/*,audio/*,.heic,.heif,.mkv,.webm" class="hidden"><div class="text-center"><p class="gold text-2xl mb-2">📁</p><p class="font-semibold text-[#d4c5b1]">Pick Files</p><p class="text-xs text-[#d4c5b1aa] mt-2">Or drag & drop</p></div></label><label class="panel cursor-pointer rounded-2xl p-8 text-center hover:border-[#b8a183] transition"><input id="media-folder-input" type="file" webkitdirectory directory multiple class="hidden"><div class="text-center"><p class="gold text-2xl mb-2">📂</p><p class="font-semibold text-[#d4c5b1]">Pick Folder</p><p class="text-xs text-[#d4c5b1aa] mt-2">Batch import</p></div></label></div>
       <div id="upload-status" class="mx-auto mt-8 hidden max-w-xl rounded-xl border p-4 text-center text-sm"></div>
-      <div class="my-10 flex flex-wrap justify-center gap-3"><button class="filter rounded-full bg-[#b8a183] px-5 py-2 text-xs font-bold uppercase text-black hover:bg-[#a89570] transition" data-filter="all">All</button><button class="filter rounded-full border border-[#b8a183] px-5 py-2 text-xs font-bold uppercase text-[#b8a183] hover:bg-[#b8a18315] transition" data-filter="image">Photos</button><button class="filter rounded-full border border-[#b8a183] px-5 py-2 text-xs font-bold uppercase text-[#b8a183] hover:bg-[#b8a18315] transition" data-filter="video">Videos</button><button class="filter rounded-full border border-[#b8a183] px-5 py-2 text-xs font-bold uppercase text-[#b8a183] hover:bg-[#b8a18315] transition" data-filter="audio">Audio</button></div>
+      <div class="my-10 flex flex-wrap justify-center gap-3"><button class="filter rounded-full bg-[#b8a183] px-5 py-2 text-xs font-bold uppercase text-black hover:bg-[#a89570] transition" data-filter="all">All</button><button class="filter rounded-full border border-[#b8a183] px-5 py-2 text-xs font-bold uppercase text-[#b8a183] hover:bg-[#b8a183] hover:text-black transition" data-filter="image">📸 Images</button><button class="filter rounded-full border border-[#b8a183] px-5 py-2 text-xs font-bold uppercase text-[#b8a183] hover:bg-[#b8a183] hover:text-black transition" data-filter="video">🎬 Videos</button><button class="filter rounded-full border border-[#b8a183] px-5 py-2 text-xs font-bold uppercase text-[#b8a183] hover:bg-[#b8a183] hover:text-black transition" data-filter="audio">🎵 Audio</button></div>
       <div id="gallery" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
     </div></section>
-    <section id="reasons" class="border-y border-[#b8a18333] bg-[#111111] px-6 py-24"><div class="mx-auto max-w-6xl"><div class="mb-12 text-center"><p class="gold text-xs uppercase tracking-[.25em]">Why We Celebrate</p><h2 class="serif text-4xl font-bold text-white">29 Reasons & More</h2></div><div id="reasons-grid" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div></div></section>
-    <section id="letter" class="px-6 py-24 text-center"><div class="panel mx-auto max-w-3xl rounded-3xl p-10"><p class="gold text-xs uppercase tracking-[.25em]">A Message From Me</p><h2 class="serif text-3xl font-bold text-white mb-6">Happy Birthday, My Love!</h2><p class="text-[#d4c5b1aa] mb-6 leading-relaxed">Every day with you is a gift. Your presence fills my life with joy, laughter, and endless love. I can't wait to celebrate this special day with you and create even more beautiful memories together. Here's to 29 amazing years and a lifetime more!</p><div class="mt-8 flex gap-3"><input id="wish-input" type="text" placeholder="Add your own wish..." class="flex-1 bg-[#1a1a1a] border border-[#b8a18333] rounded-lg px-4 py-2 text-white placeholder-[#b8a18399] focus:outline-none focus:border-[#b8a183]"><button id="wish-button" class="px-6 py-2 bg-[#b8a183] hover:bg-[#a89570] text-black font-bold rounded-lg transition">Send</button></div><div id="wish-success" class="mt-4 hidden text-green-400 text-sm">✓ Wish saved to localStorage</div></div></section>
+    <section id="reasons" class="border-y border-[#b8a18333] bg-[#111111] px-6 py-24"><div class="mx-auto max-w-6xl"><div class="mb-12 text-center"><p class="gold text-xs uppercase tracking-[.25em]">Why I Love You</p><h2 class="serif mt-3 text-3xl font-bold text-white md:text-5xl">21 Reasons</h2></div><div id="reasons-grid" class="grid gap-6 md:grid-cols-3"></div></div></section>
+    <section id="letter" class="px-6 py-24 text-center"><div class="panel mx-auto max-w-3xl rounded-3xl p-10"><p class="gold text-xs uppercase tracking-[.25em]">A Message From Me</p><h2 class="serif mt-4 mb-6 text-3xl font-bold text-white">My Love</h2><p class="text-[#d4c5b1] leading-relaxed mb-8">Every day with you is a gift. Your smile, your laugh, your presence in my life—everything about you makes me a better person. As you celebrate 29 years, I want you to know that every moment we've shared has been precious. Here's to many more birthdays, adventures, and memories together. I love you more than words could ever express.</p><button id="music-toggle" class="px-6 py-3 bg-[#b8a183] text-black font-bold rounded-lg hover:bg-[#a89570] transition">🎵 Play Music</button></div></section>
+    <section class="border-t border-[#b8a18333] bg-[#111111] px-6 py-24"><div class="mx-auto max-w-3xl"><div class="text-center mb-8"><p class="gold text-xs uppercase tracking-[.25em]">Birthday Wishes</p><h3 class="serif mt-3 text-2xl font-bold text-white">Share Your Wishes</h3></div><div class="flex gap-3"><input id="wish-input" type="text" placeholder="Write your wish..." class="flex-1 px-4 py-2 bg-[#121212] border border-[#b8a18333] text-[#d4c5b1] rounded-lg placeholder-[#d4c5b1aa] focus:outline-none focus:border-[#b8a183]"><button id="wish-button" class="px-6 py-2 bg-[#b8a183] text-black font-bold rounded-lg hover:bg-[#a89570] transition">Send</button></div><div id="wish-success" class="hidden mt-4 p-4 bg-green-900/20 border border-green-400/50 text-green-200 rounded-lg text-sm">✓ Wish saved!</div></div></section>
   </main>
   <footer class="border-t border-[#b8a18333] py-10 text-center text-xs uppercase tracking-widest text-[#b8a18399]">Crafted with love ✨</footer>
 <script>
@@ -37,7 +38,7 @@
   const CLOUDINARY_UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/auto/upload`;
 
   const SUPABASE_URL = 'https://lepxhrbujpqavnsbrmle.supabase.co';
-  const SUPABASE_KEY = 'sb_publishable_f32pZXU73gMQx9v0omcweA_VHu35O7h';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxlcHhocmJ1anBxYXZuc2JybWxlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjcwNDAxNDksImV4cCI6MTg4NDgwNzcwOX0.U6TdG3kKFfPL0RjZNqFsQxI8MQKrWqlKVJb0r1HQ-eE';
   const SUPABASE_MEDIA_URL = `${SUPABASE_URL}/rest/v1/media`;
 
   let media = [];
@@ -61,25 +62,30 @@
   };
 
   const supabaseHeaders = {
-    apikey: SUPABASE_KEY,
-    Authorization: `Bearer ${SUPABASE_KEY}`,
+    apikey: SUPABASE_ANON_KEY,
+    Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
     'Content-Type': 'application/json',
     Prefer: 'return=representation'
   };
 
   async function loadSharedMedia() {
-    const response = await fetch(`${SUPABASE_MEDIA_URL}?select=id,name,type,url,created_at&order=created_at.asc`, {
-      headers: supabaseHeaders,
-      mode: 'cors'
-    });
+    try {
+      const response = await fetch(`${SUPABASE_MEDIA_URL}?select=id,name,type,url,created_at&order=created_at.asc`, {
+        headers: supabaseHeaders,
+        mode: 'cors'
+      });
 
-    if (!response.ok) {
-      const text = await response.text();
-      throw new Error(`Supabase load failed (${response.status}): ${text || response.statusText}`);
+      if (!response.ok) {
+        const text = await response.text();
+        throw new Error(`Load failed (${response.status}): ${text || response.statusText}`);
+      }
+
+      media = await response.json();
+      return media;
+    } catch (error) {
+      console.error('Load error:', error);
+      throw error;
     }
-
-    media = await response.json();
-    return media;
   }
 
   async function saveSharedMedia(item) {
@@ -96,11 +102,11 @@
 
     if (!response.ok) {
       const text = await response.text();
-      throw new Error(`Supabase save failed (${response.status}): ${text || response.statusText}`);
+      throw new Error(`Save failed (${response.status}): ${text || response.statusText}`);
     }
 
     const data = await response.json();
-    return data[0] || data;
+    return Array.isArray(data) ? (data[0] || data) : data;
   }
 
   async function deleteSharedMedia(id) {
@@ -112,7 +118,7 @@
 
     if (!response.ok) {
       const text = await response.text();
-      throw new Error(`Supabase delete failed (${response.status}): ${text || response.statusText}`);
+      throw new Error(`Delete failed (${response.status}): ${text || response.statusText}`);
     }
 
     return true;
@@ -175,7 +181,7 @@
 
     if (!response.ok) {
       const data = await response.json().catch(() => ({}));
-      throw new Error(data.error?.message || `Cloudinary upload failed (${response.status})`);
+      throw new Error(data.error?.message || `Upload failed (${response.status})`);
     }
 
     const data = await response.json();
@@ -212,7 +218,7 @@
       } catch (error) {
         failed++;
         console.error(`Failed to upload ${file.name}:`, error);
-        message(`Save Failed: ${error.message}`, true);
+        message(`Upload Failed: ${error.message}`, true);
       }
     }
 
