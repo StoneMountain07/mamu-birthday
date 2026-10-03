@@ -383,6 +383,9 @@
     <div class="max-w-5xl max-h-[85vh] flex flex-col items-center justify-center overflow-hidden">
       <div id="lightbox-media-container" class="w-full h-full flex items-center justify-center"></div>
       <p id="lightbox-caption" class="text-sm text-[#d4c5b1] mt-4 text-center"></p>
+      <button id="lightbox-delete-btn" class="mt-3 px-4 py-1.5 rounded-full border border-red-500/30 bg-red-950/30 hover:bg-red-900/50 text-red-300 text-xs font-semibold flex items-center gap-1.5 transition">
+        <span>ðŸ—‘ï¸</span> Delete from Database
+      </button>
     </div>
   </div>
 
@@ -759,9 +762,35 @@
 
     if (!response.ok) {
       const text = await response.text();
-      throw new Error(`Delete failed (${response.status}): ${text || response.statusText}`);
+      throw new Error(`Database delete failed (${response.status}): ${text || response.statusText}`);
     }
     return true;
+  }
+
+  async function performDelete(id, name) {
+    if (!isUnlocked()) {
+      promptPassword();
+      return;
+    }
+
+    if (!confirm(`Are you sure you want to permanently delete "${name || 'this media'}" from the database?`)) {
+      return;
+    }
+
+    showStatus(`Deleting "${name || 'item'}" from database...`);
+    try {
+      await deleteSharedMedia(id);
+      media = media.filter(m => m.id !== id);
+      renderGallery();
+      showStatus('âœ“ Successfully deleted from database & website.');
+      if (!lightbox.classList.contains('hidden')) {
+        lightbox.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }
+    } catch (err) {
+      console.error('Delete error:', err);
+      showStatus(`Delete failed: ${err.message}`, true);
+    }
   }
 
   function updateCounts() {
@@ -818,7 +847,7 @@
         ${visual}
         <div class="flex items-center justify-between gap-2 mt-auto pt-2 border-t border-[#d4af3715]">
           <p class="text-xs text-[#d4c5b1aa] truncate flex-1 font-mono">${item.name}</p>
-          <button class="delete-btn text-red-400 hover:text-red-300 text-xs px-2.5 py-1 rounded border border-red-500/20 hover:bg-red-950/40 transition" data-id="${item.id}">
+          <button class="delete-btn text-red-400 hover:text-red-300 text-xs px-2.5 py-1 rounded border border-red-500/20 hover:bg-red-950/40 transition" data-id="${item.id}" data-name="${item.name.replace(/"/g, '&quot;')}">
             Delete
           </button>
         </div>
@@ -828,22 +857,9 @@
 
     // Delete Handlers
     galleryEl.querySelectorAll('.delete-btn').forEach(btn => {
-      btn.addEventListener('click', async e => {
+      btn.addEventListener('click', e => {
         e.stopPropagation();
-        if (!confirm('Are you sure you want to delete this memory?')) return;
-        const id = btn.dataset.id;
-        btn.disabled = true;
-        btn.textContent = '...';
-        try {
-          await deleteSharedMedia(id);
-          media = media.filter(m => m.id !== id);
-          renderGallery();
-          showStatus('Memory deleted successfully.');
-        } catch (err) {
-          btn.disabled = false;
-          btn.textContent = 'Delete';
-          showStatus(err.message, true);
-        }
+        performDelete(btn.dataset.id, btn.dataset.name);
       });
     });
 
@@ -903,6 +919,16 @@
       updateLightboxContent();
     }
   });
+
+  const lightboxDel = document.getElementById('lightbox-delete-btn');
+  if (lightboxDel) {
+    lightboxDel.addEventListener('click', () => {
+      if (currentLightboxIndex >= 0 && currentLightboxIndex < currentLightboxList.length) {
+        const item = currentLightboxList[currentLightboxIndex];
+        performDelete(item.id, item.name);
+      }
+    });
+  }
 
   // Upload Logic
   async function uploadFile(file) {
